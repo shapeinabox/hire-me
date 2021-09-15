@@ -1,13 +1,33 @@
+# Instructions
+
+clone the repository and run the following commands:
+yarn install
+yarn start
+
+# What did I do?
+
+Since the focus of the challenge wasn't the design, I decide to use MaterialUI components to achieve a good UI out of the box.
+
+To store the children I decided to use redux, even though it's overkill for a small like these, I wanted it to feel like a real-world and bigger application.
+I also used the store for managing a couple of UI states.
+
+To handle asynchronous actions (effects), I decided to use redux-observable instead of thunk. I actually find it more clean and powerful (but of course I don't mind working with thunk).
+
+For the check-in/out actions, since we are loading a lot of data all at once, initially I didn't want to trigger a refresh of the whole list, since it's a lot of data. So after doing the POST request I wanted to update manually in store only the single child.
+Unfortunately typescript was giving me some bad errors about the updateChild action, I could resolve them, but I'm out of time for the challenge, so I just trigger a reload of the all children after the check-in/out request for now.
+
 # Interested in working for Famly?
 
-Give us a chance to see your beautiful code! 🤩 
+Give us a chance to see your beautiful code! 🤩
 
 How to get started:
+
 - Fork this repository
 - Create a small application in React (or another agreed upon framework)
 - Describe your design decisions and setup instructions in the README.md of the forked repository
 
 The application should be able to do 3 things:
+
 1. List children with some form of pagination/lazy-loading/infinite-scroll
 2. Checkin a child
 3. Checkout a child
@@ -40,6 +60,7 @@ $ curl "https://tryfamly.co/api/daycare/tablet/group?accessToken=234ffdb8-0889-4
 ```
 
 ### Checkin child
+
 ```
 POST https://tryfamly.co/api/v2/children/<childId>/checkins
 
@@ -58,6 +79,7 @@ $ curl \
 ```
 
 ### Checkout child
+
 ```
 POST https://tryfamly.co/api/v2/children/<childId>/checkout
 Arguments: {
