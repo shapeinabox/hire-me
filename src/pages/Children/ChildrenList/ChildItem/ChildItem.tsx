@@ -27,7 +27,7 @@ const ChildItem: FC<Props> = ({ child }) => {
 
     const handleCheck = () => {
         // `${date.getHours()}:${date.getMinutes()}`
-        appDispatch(checkChild(child.childId, `${time.getHours()}:${time.getMinutes()}`, child.checkedIn ? "checkout" : "checkins"))
+        appDispatch(checkChild(child.childId, time.toISOString(), child.checkedIn ? "checkout" : "checkins"))
     }
 
     return (
